@@ -8,20 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		411FDB39217B3C3000B5ABD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB38217B3C3000B5ABD5 /* AppDelegate.swift */; };
-		411FDB3B217B3C3000B5ABD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB3A217B3C3000B5ABD5 /* ViewController.swift */; };
 		411FDB3E217B3C3000B5ABD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411FDB3C217B3C3000B5ABD5 /* Main.storyboard */; };
 		411FDB40217B3C3500B5ABD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 411FDB3F217B3C3500B5ABD5 /* Assets.xcassets */; };
 		411FDB43217B3C3500B5ABD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411FDB41217B3C3500B5ABD5 /* LaunchScreen.storyboard */; };
+		411FDB4C217B9B5A00B5ABD5 /* NotebookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB4B217B9B5A00B5ABD5 /* NotebookListViewController.swift */; };
+		411FDB4E217E503F00B5ABD5 /* NotebookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB4D217E503F00B5ABD5 /* NotebookListCell.swift */; };
+		411FDB51217E653F00B5ABD5 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB50217E653F00B5ABD5 /* Notebook.swift */; };
+		411FDB54217E719500B5ABD5 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB53217E719500B5ABD5 /* Identifiers.swift */; };
+		411FDB56217E730D00B5ABD5 /* UtilsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB55217E730D00B5ABD5 /* UtilsFunctions.swift */; };
+		4130AFD3217E7E9000C56B4A /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130AFD2217E7E9000C56B4A /* Note.swift */; };
+		4130AFD5217E7FA900C56B4A /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130AFD4217E7FA900C56B4A /* NotesListViewController.swift */; };
+		4130AFDA217E8DB100C56B4A /* NoteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130AFD8217E8DB100C56B4A /* NoteDetailsViewController.swift */; };
+		4130AFDB217E8DB200C56B4A /* NoteDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4130AFD9217E8DB100C56B4A /* NoteDetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		411FDB35217B3C3000B5ABD5 /* Everpobre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everpobre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		411FDB38217B3C3000B5ABD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		411FDB3A217B3C3000B5ABD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		411FDB3D217B3C3000B5ABD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		411FDB3F217B3C3500B5ABD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		411FDB42217B3C3500B5ABD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		411FDB44217B3C3500B5ABD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		411FDB4B217B9B5A00B5ABD5 /* NotebookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookListViewController.swift; sourceTree = "<group>"; };
+		411FDB4D217E503F00B5ABD5 /* NotebookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookListCell.swift; sourceTree = "<group>"; };
+		411FDB50217E653F00B5ABD5 /* Notebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
+		411FDB53217E719500B5ABD5 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
+		411FDB55217E730D00B5ABD5 /* UtilsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsFunctions.swift; sourceTree = "<group>"; };
+		4130AFD2217E7E9000C56B4A /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		4130AFD4217E7FA900C56B4A /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
+		4130AFD8217E8DB100C56B4A /* NoteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsViewController.swift; sourceTree = "<group>"; };
+		4130AFD9217E8DB100C56B4A /* NoteDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteDetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +70,62 @@
 		411FDB37217B3C3000B5ABD5 /* Everpobre */ = {
 			isa = PBXGroup;
 			children = (
+				411FDB4F217E652C00B5ABD5 /* Domains */,
+				411FDB4A217B9A7900B5ABD5 /* NotebookList */,
+				4130AFD6217E825900C56B4A /* NotesList */,
+				4130AFD7217E8D7300C56B4A /* NoteDetails */,
+				411FDB52217E717F00B5ABD5 /* Utils */,
 				411FDB38217B3C3000B5ABD5 /* AppDelegate.swift */,
-				411FDB3A217B3C3000B5ABD5 /* ViewController.swift */,
 				411FDB3C217B3C3000B5ABD5 /* Main.storyboard */,
 				411FDB3F217B3C3500B5ABD5 /* Assets.xcassets */,
 				411FDB41217B3C3500B5ABD5 /* LaunchScreen.storyboard */,
 				411FDB44217B3C3500B5ABD5 /* Info.plist */,
 			);
 			path = Everpobre;
+			sourceTree = "<group>";
+		};
+		411FDB4A217B9A7900B5ABD5 /* NotebookList */ = {
+			isa = PBXGroup;
+			children = (
+				411FDB4B217B9B5A00B5ABD5 /* NotebookListViewController.swift */,
+				411FDB4D217E503F00B5ABD5 /* NotebookListCell.swift */,
+			);
+			path = NotebookList;
+			sourceTree = "<group>";
+		};
+		411FDB4F217E652C00B5ABD5 /* Domains */ = {
+			isa = PBXGroup;
+			children = (
+				411FDB50217E653F00B5ABD5 /* Notebook.swift */,
+				4130AFD2217E7E9000C56B4A /* Note.swift */,
+			);
+			path = Domains;
+			sourceTree = "<group>";
+		};
+		411FDB52217E717F00B5ABD5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				411FDB53217E719500B5ABD5 /* Identifiers.swift */,
+				411FDB55217E730D00B5ABD5 /* UtilsFunctions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4130AFD6217E825900C56B4A /* NotesList */ = {
+			isa = PBXGroup;
+			children = (
+				4130AFD4217E7FA900C56B4A /* NotesListViewController.swift */,
+			);
+			path = NotesList;
+			sourceTree = "<group>";
+		};
+		4130AFD7217E8D7300C56B4A /* NoteDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4130AFD8217E8DB100C56B4A /* NoteDetailsViewController.swift */,
+				4130AFD9217E8DB100C56B4A /* NoteDetailsViewController.xib */,
+			);
+			path = NoteDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				411FDB43217B3C3500B5ABD5 /* LaunchScreen.storyboard in Resources */,
+				4130AFDB217E8DB200C56B4A /* NoteDetailsViewController.xib in Resources */,
 				411FDB40217B3C3500B5ABD5 /* Assets.xcassets in Resources */,
 				411FDB3E217B3C3000B5ABD5 /* Main.storyboard in Resources */,
 			);
@@ -135,8 +200,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				411FDB3B217B3C3000B5ABD5 /* ViewController.swift in Sources */,
+				411FDB4C217B9B5A00B5ABD5 /* NotebookListViewController.swift in Sources */,
+				411FDB56217E730D00B5ABD5 /* UtilsFunctions.swift in Sources */,
+				4130AFDA217E8DB100C56B4A /* NoteDetailsViewController.swift in Sources */,
+				4130AFD3217E7E9000C56B4A /* Note.swift in Sources */,
 				411FDB39217B3C3000B5ABD5 /* AppDelegate.swift in Sources */,
+				4130AFD5217E7FA900C56B4A /* NotesListViewController.swift in Sources */,
+				411FDB51217E653F00B5ABD5 /* Notebook.swift in Sources */,
+				411FDB54217E719500B5ABD5 /* Identifiers.swift in Sources */,
+				411FDB4E217E503F00B5ABD5 /* NotebookListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
