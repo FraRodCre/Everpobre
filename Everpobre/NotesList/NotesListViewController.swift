@@ -47,11 +47,22 @@ class NotesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isTranslucent = false
+        
         //title = "Notas de: \(notebook.name)" // Before coredata
         title = "Notas"
         
+        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
+        navigationItem.rightBarButtonItem = addButtonItem
+        
         setupTableView()
         //notes = notebook.notes // Before coredata
+    }
+    
+    @objc private func addNote() {
+        let newNoteVC = NoteDetailsViewController(kind: .new)
+        let navVC = UINavigationController(rootViewController: newNoteVC)
+        present(navVC, animated: true, completion: nil)
     }
     
     private func setupTableView() {
@@ -85,7 +96,9 @@ extension NotesListViewController: UITableViewDataSource {
 extension NotesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         // Get note to show
-        let detailVC = NoteDetailsViewController(note: notes[indexPath.row])
+        //let detailVC = NoteDetailsViewController(note: notes[indexPath.row]) // Before coreData
+        
+        let detailVC = NoteDetailsViewController(kind: .existing(notes[indexPath.row]))
         show(detailVC, sender: nil)
     }
 }

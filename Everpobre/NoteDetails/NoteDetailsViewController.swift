@@ -13,7 +13,7 @@ class NoteDetailsViewController: UIViewController {
     // MARK: IBOulets
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var creationDateLabel: UILabel!
     @IBOutlet weak var lastSeenDateLabel: UILabel!
@@ -21,11 +21,23 @@ class NoteDetailsViewController: UIViewController {
     
     // MARK: Properties
     //let note: NoteOld // Before coredata
-    let note: Note
+    //let note: Note // Before coreData
+    enum Kind {
+        case new
+        case existing(Note)
+    }
+    
+    let kind: Kind
     
     // MARK: Initializers (Markers)
-    init(note: Note /*NoteOld*/) {
+    /* Before coreData
+     init(note: Note //NoteOld) {
         self.note = note
+        super.init(nibName: "NoteDetailsViewController", bundle: nil)
+    }*/
+    
+    init (kind: Kind) {
+        self.kind = kind
         super.init(nibName: "NoteDetailsViewController", bundle: nil)
     }
     
@@ -35,18 +47,59 @@ class NoteDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configure(with: kind)
     }
     
     // Change information of a note
-    private func configure() {
-        title = "Detalle"
-        titleLabel.text = note.text
+    private func configure(with kind: Kind) {
+        switch kind {
+        case .new:
+            
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
+            self.navigationItem.rightBarButtonItem = saveButtonItem
+            
+            let cancelButtomItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+            navigationItem.leftBarButtonItem = cancelButtomItem
+            configureValues()
+        case .existing:
+            configureValues()
+        }
+        
+    }
+    
+    @objc private func saveNote() {
+        
+    }
+    
+    @objc private func cancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func configureValues() {
+        title = kind.title
+        
+        titleTextField.text = kind.note?.text
         /*tagsLabel.text = note.tags?.joined(separator: ",")
-        creationDateLabel.text = note.creationDate.dateToString()
-        lastSeenDateLabel.text = note.lastSeenDate?.dateToString() ?? ""*/
-        creationDateLabel.text = (note.creationDate as Date?)?.dateToString() ?? ""
-        lastSeenDateLabel.text = (note.lastSeenDate as Date?)?.dateToString() ?? ""
-        descriptionTextView.text = note.text ?? "Introducir texto..."
+         creationDateLabel.text = note.creationDate.dateToString()
+         lastSeenDateLabel.text = note.lastSeenDate?.dateToString() ?? ""*/
+        creationDateLabel.text = (kind.note?.creationDate as Date?)?.dateToString() ?? ""
+        lastSeenDateLabel.text = (kind.note?.lastSeenDate as Date?)?.dateToString() ?? ""
+        descriptionTextView.text = kind.note?.text ?? "Introducir texto..."
+    }
+}
+
+private extension NoteDetailsViewController.Kind {
+    var note: Note?  {
+        guard case let .existing(note) = self else { return nil }
+        return note
+    }
+    
+    var title: String {
+        switch self {
+        case .existing:
+            return "Detalle"
+        case .new:
+            return "Nota nueva"
+        }
     }
 }

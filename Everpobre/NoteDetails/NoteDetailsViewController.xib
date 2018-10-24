@@ -17,7 +17,7 @@
                 <outlet property="imageView" destination="NwJ-0x-NQp" id="IKP-ut-h8x"/>
                 <outlet property="lastSeenDateLabel" destination="7iJ-p0-6iL" id="jlN-EW-REu"/>
                 <outlet property="tagsLabel" destination="Zn7-xD-a6Z" id="qHm-Yk-OH0"/>
-                <outlet property="titleLabel" destination="IR1-f0-naz" id="L50-Wr-NNI"/>
+                <outlet property="titleTextField" destination="3Fn-8w-TLZ" id="aRh-N6-sIq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -51,13 +51,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Título label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR1-f0-naz" userLabel="TitleLabel">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title label" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Fn-8w-TLZ">
                                                     <rect key="frame" x="0.0" y="20.5" width="207" height="80"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2lC-zC-GrZ" userLabel="Tags">
