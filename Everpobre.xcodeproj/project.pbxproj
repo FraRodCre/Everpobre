@@ -25,7 +25,7 @@
 		4165DDD3217FD195007B62D5 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDCF217FD195007B62D5 /* Note+CoreDataClass.swift */; };
 		4165DDD4217FD195007B62D5 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDD0217FD195007B62D5 /* Note+CoreDataProperties.swift */; };
 		4165DDD5217FD195007B62D5 /* Notebook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDD1217FD195007B62D5 /* Notebook+CoreDataClass.swift */; };
-		4165DDD6217FD195007B62D5 /* Notebook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDD2217FD195007B62D5 /* Notebook+CoreDataProperties.swift */; };
+		4199DB932181262B006BC85B /* Notebook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199DB922181262B006BC85B /* Notebook+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +49,7 @@
 		4165DDCF217FD195007B62D5 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4165DDD0217FD195007B62D5 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4165DDD1217FD195007B62D5 /* Notebook+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4165DDD2217FD195007B62D5 /* Notebook+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4199DB922181262B006BC85B /* Notebook+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +148,7 @@
 				4165DDCF217FD195007B62D5 /* Note+CoreDataClass.swift */,
 				4165DDD0217FD195007B62D5 /* Note+CoreDataProperties.swift */,
 				4165DDD1217FD195007B62D5 /* Notebook+CoreDataClass.swift */,
-				4165DDD2217FD195007B62D5 /* Notebook+CoreDataProperties.swift */,
+				4199DB922181262B006BC85B /* Notebook+CoreDataProperties.swift */,
 				4165DDCC217FCD44007B62D5 /* Everpobre.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -228,12 +228,12 @@
 			files = (
 				411FDB4C217B9B5A00B5ABD5 /* NotebookListViewController.swift in Sources */,
 				411FDB56217E730D00B5ABD5 /* UtilsFunctions.swift in Sources */,
-				4165DDD6217FD195007B62D5 /* Notebook+CoreDataProperties.swift in Sources */,
 				4130AFDA217E8DB100C56B4A /* NoteDetailsViewController.swift in Sources */,
 				4165DDD4217FD195007B62D5 /* Note+CoreDataProperties.swift in Sources */,
 				4165DDD5217FD195007B62D5 /* Notebook+CoreDataClass.swift in Sources */,
 				4130AFD3217E7E9000C56B4A /* NoteOld.swift in Sources */,
 				411FDB39217B3C3000B5ABD5 /* AppDelegate.swift in Sources */,
+				4199DB932181262B006BC85B /* Notebook+CoreDataProperties.swift in Sources */,
 				4165DDCE217FCD44007B62D5 /* Everpobre.xcdatamodeld in Sources */,
 				4165DDCA217F83AC007B62D5 /* CoreDataStack.swift in Sources */,
 				4130AFD5217E7FA900C56B4A /* NotesListViewController.swift in Sources */,

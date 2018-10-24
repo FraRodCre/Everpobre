@@ -18,17 +18,24 @@ class NotesListViewController: UIViewController {
         return tableView
     }()
     
-    let notebook: NotebookOld
+    let notebook: Notebook //NotebookOld
     
-    var notes: [NoteOld] = [] {
+    /* Notes before Coredata
+     var notes: [NoteOld] = [] {
         // When reset reload data
         didSet {
             tableView.reloadData()
         }
+    }*/
+    
+    var notes: [Note] {
+        guard let notes = notebook.notes?.array else { return [] }
+        
+        return notes as! [Note]
     }
     
     // MARK: Initializers (Markers)
-    init(notebook: NotebookOld) {
+    init(notebook: Notebook /*NotebookOld*/) {
         self.notebook = notebook
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,10 +47,11 @@ class NotesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Notas de: \(notebook.name)"
+        //title = "Notas de: \(notebook.name)" // Before coredata
+        title = "Notas"
         
         setupTableView()
-        notes = notebook.notes
+        //notes = notebook.notes // Before coredata
     }
     
     private func setupTableView() {

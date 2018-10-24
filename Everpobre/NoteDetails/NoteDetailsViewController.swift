@@ -20,10 +20,11 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     
     // MARK: Properties
-    let note: NoteOld
+    //let note: NoteOld // Before coredata
+    let note: Note
     
     // MARK: Initializers (Markers)
-    init(note: NoteOld) {
+    init(note: Note /*NoteOld*/) {
         self.note = note
         super.init(nibName: "NoteDetailsViewController", bundle: nil)
     }
@@ -41,9 +42,11 @@ class NoteDetailsViewController: UIViewController {
     private func configure() {
         title = "Detalle"
         titleLabel.text = note.text
-        tagsLabel.text = note.tags?.joined(separator: ",")
+        /*tagsLabel.text = note.tags?.joined(separator: ",")
         creationDateLabel.text = note.creationDate.dateToString()
-        lastSeenDateLabel.text = note.lastSeenDate?.dateToString() ?? ""
+        lastSeenDateLabel.text = note.lastSeenDate?.dateToString() ?? ""*/
+        creationDateLabel.text = (note.creationDate as Date?)?.dateToString() ?? ""
+        lastSeenDateLabel.text = (note.lastSeenDate as Date?)?.dateToString() ?? ""
         descriptionTextView.text = note.text ?? "Introducir texto..."
     }
 }

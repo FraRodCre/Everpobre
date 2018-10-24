@@ -135,11 +135,16 @@ extension NotebookListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*let notebook = modelNotebook[indexPath.row]
+        /*  Before coreData
+        let notebook = modelNotebook[indexPath.row]
         let notesListVC = NotesListViewController(notebook: notebook)*/
         
         /*let notebook = dataSource [indexPath.row]
         let notesListVC = NotesListViewController(notebook: notebook)
         show(notesListVC, sender: nil)*/
+        
+        let notebook = dataSource[indexPath.row] as! Notebook
+        let notesListVC = NotesListViewController(notebook: notebook)
+        show(notesListVC, sender: nil)
     }
 }
