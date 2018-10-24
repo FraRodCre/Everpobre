@@ -19,10 +19,16 @@ class NotebookListCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    // Function for congure the cell of the Notebook
-    func configure(with notebook: NotebookOld){
+    // Function for configure the cell of the Notebook
+    /*func configure(with notebook: NotebookOld){
         titleLabel.text = notebook.name
         creationDateLabel.text = "Creado: \(notebook.creationDate.dateToString())"
+    }*/
+    
+    // Function for configure the cell of the Notebook (CoreData)
+    func configure(with notebook: Notebook){
+        titleLabel.text = notebook.name
+        creationDateLabel.text = "Creado: \((notebook.creationDate as Date?)?.dateToString() ?? "" )"
     }
 }
 
