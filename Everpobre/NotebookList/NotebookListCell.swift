@@ -20,7 +20,7 @@ class NotebookListCell: UITableViewCell {
     }
     
     // Function for congure the cell of the Notebook
-    func configure(with notebook: Notebook){
+    func configure(with notebook: NotebookOld){
         titleLabel.text = notebook.name
         creationDateLabel.text = "Creado: \(notebook.creationDate.dateToString())"
     }

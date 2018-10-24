@@ -13,13 +13,19 @@
 		411FDB43217B3C3500B5ABD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411FDB41217B3C3500B5ABD5 /* LaunchScreen.storyboard */; };
 		411FDB4C217B9B5A00B5ABD5 /* NotebookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB4B217B9B5A00B5ABD5 /* NotebookListViewController.swift */; };
 		411FDB4E217E503F00B5ABD5 /* NotebookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB4D217E503F00B5ABD5 /* NotebookListCell.swift */; };
-		411FDB51217E653F00B5ABD5 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB50217E653F00B5ABD5 /* Notebook.swift */; };
+		411FDB51217E653F00B5ABD5 /* NotebookOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB50217E653F00B5ABD5 /* NotebookOld.swift */; };
 		411FDB54217E719500B5ABD5 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB53217E719500B5ABD5 /* Identifiers.swift */; };
 		411FDB56217E730D00B5ABD5 /* UtilsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB55217E730D00B5ABD5 /* UtilsFunctions.swift */; };
-		4130AFD3217E7E9000C56B4A /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130AFD2217E7E9000C56B4A /* Note.swift */; };
+		4130AFD3217E7E9000C56B4A /* NoteOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130AFD2217E7E9000C56B4A /* NoteOld.swift */; };
 		4130AFD5217E7FA900C56B4A /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130AFD4217E7FA900C56B4A /* NotesListViewController.swift */; };
 		4130AFDA217E8DB100C56B4A /* NoteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130AFD8217E8DB100C56B4A /* NoteDetailsViewController.swift */; };
 		4130AFDB217E8DB200C56B4A /* NoteDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4130AFD9217E8DB100C56B4A /* NoteDetailsViewController.xib */; };
+		4165DDCA217F83AC007B62D5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDC9217F83AC007B62D5 /* CoreDataStack.swift */; };
+		4165DDCE217FCD44007B62D5 /* Everpobre.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDCC217FCD44007B62D5 /* Everpobre.xcdatamodeld */; };
+		4165DDD3217FD195007B62D5 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDCF217FD195007B62D5 /* Note+CoreDataClass.swift */; };
+		4165DDD4217FD195007B62D5 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDD0217FD195007B62D5 /* Note+CoreDataProperties.swift */; };
+		4165DDD5217FD195007B62D5 /* Notebook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDD1217FD195007B62D5 /* Notebook+CoreDataClass.swift */; };
+		4165DDD6217FD195007B62D5 /* Notebook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165DDD2217FD195007B62D5 /* Notebook+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,13 +37,19 @@
 		411FDB44217B3C3500B5ABD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		411FDB4B217B9B5A00B5ABD5 /* NotebookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookListViewController.swift; sourceTree = "<group>"; };
 		411FDB4D217E503F00B5ABD5 /* NotebookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookListCell.swift; sourceTree = "<group>"; };
-		411FDB50217E653F00B5ABD5 /* Notebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
+		411FDB50217E653F00B5ABD5 /* NotebookOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookOld.swift; sourceTree = "<group>"; };
 		411FDB53217E719500B5ABD5 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		411FDB55217E730D00B5ABD5 /* UtilsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsFunctions.swift; sourceTree = "<group>"; };
-		4130AFD2217E7E9000C56B4A /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		4130AFD2217E7E9000C56B4A /* NoteOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteOld.swift; sourceTree = "<group>"; };
 		4130AFD4217E7FA900C56B4A /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 		4130AFD8217E8DB100C56B4A /* NoteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsViewController.swift; sourceTree = "<group>"; };
 		4130AFD9217E8DB100C56B4A /* NoteDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteDetailsViewController.xib; sourceTree = "<group>"; };
+		4165DDC9217F83AC007B62D5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		4165DDCD217FCD44007B62D5 /* Everpobre.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Everpobre.xcdatamodel; sourceTree = "<group>"; };
+		4165DDCF217FD195007B62D5 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4165DDD0217FD195007B62D5 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4165DDD1217FD195007B62D5 /* Notebook+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4165DDD2217FD195007B62D5 /* Notebook+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +108,9 @@
 		411FDB4F217E652C00B5ABD5 /* Domains */ = {
 			isa = PBXGroup;
 			children = (
-				411FDB50217E653F00B5ABD5 /* Notebook.swift */,
-				4130AFD2217E7E9000C56B4A /* Note.swift */,
+				4165DDCB217FCD22007B62D5 /* CoreData */,
+				411FDB50217E653F00B5ABD5 /* NotebookOld.swift */,
+				4130AFD2217E7E9000C56B4A /* NoteOld.swift */,
 			);
 			path = Domains;
 			sourceTree = "<group>";
@@ -107,6 +120,7 @@
 			children = (
 				411FDB53217E719500B5ABD5 /* Identifiers.swift */,
 				411FDB55217E730D00B5ABD5 /* UtilsFunctions.swift */,
+				4165DDC9217F83AC007B62D5 /* CoreDataStack.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -126,6 +140,18 @@
 				4130AFD9217E8DB100C56B4A /* NoteDetailsViewController.xib */,
 			);
 			path = NoteDetails;
+			sourceTree = "<group>";
+		};
+		4165DDCB217FCD22007B62D5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4165DDCF217FD195007B62D5 /* Note+CoreDataClass.swift */,
+				4165DDD0217FD195007B62D5 /* Note+CoreDataProperties.swift */,
+				4165DDD1217FD195007B62D5 /* Notebook+CoreDataClass.swift */,
+				4165DDD2217FD195007B62D5 /* Notebook+CoreDataProperties.swift */,
+				4165DDCC217FCD44007B62D5 /* Everpobre.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,11 +228,17 @@
 			files = (
 				411FDB4C217B9B5A00B5ABD5 /* NotebookListViewController.swift in Sources */,
 				411FDB56217E730D00B5ABD5 /* UtilsFunctions.swift in Sources */,
+				4165DDD6217FD195007B62D5 /* Notebook+CoreDataProperties.swift in Sources */,
 				4130AFDA217E8DB100C56B4A /* NoteDetailsViewController.swift in Sources */,
-				4130AFD3217E7E9000C56B4A /* Note.swift in Sources */,
+				4165DDD4217FD195007B62D5 /* Note+CoreDataProperties.swift in Sources */,
+				4165DDD5217FD195007B62D5 /* Notebook+CoreDataClass.swift in Sources */,
+				4130AFD3217E7E9000C56B4A /* NoteOld.swift in Sources */,
 				411FDB39217B3C3000B5ABD5 /* AppDelegate.swift in Sources */,
+				4165DDCE217FCD44007B62D5 /* Everpobre.xcdatamodeld in Sources */,
+				4165DDCA217F83AC007B62D5 /* CoreDataStack.swift in Sources */,
 				4130AFD5217E7FA900C56B4A /* NotesListViewController.swift in Sources */,
-				411FDB51217E653F00B5ABD5 /* Notebook.swift in Sources */,
+				411FDB51217E653F00B5ABD5 /* NotebookOld.swift in Sources */,
+				4165DDD3217FD195007B62D5 /* Note+CoreDataClass.swift in Sources */,
 				411FDB54217E719500B5ABD5 /* Identifiers.swift in Sources */,
 				411FDB4E217E503F00B5ABD5 /* NotebookListCell.swift in Sources */,
 			);
@@ -406,6 +438,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4165DDCC217FCD44007B62D5 /* Everpobre.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4165DDCD217FCD44007B62D5 /* Everpobre.xcdatamodel */,
+			);
+			currentVersion = 4165DDCD217FCD44007B62D5 /* Everpobre.xcdatamodel */;
+			path = Everpobre.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 411FDB2D217B3C3000B5ABD5 /* Project object */;
 }

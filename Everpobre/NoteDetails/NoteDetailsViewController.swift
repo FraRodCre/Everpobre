@@ -20,10 +20,10 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     
     // MARK: Properties
-    let note: Note
+    let note: NoteOld
     
     // MARK: Initializers (Markers)
-    init(note: Note) {
+    init(note: NoteOld) {
         self.note = note
         super.init(nibName: "NoteDetailsViewController", bundle: nil)
     }

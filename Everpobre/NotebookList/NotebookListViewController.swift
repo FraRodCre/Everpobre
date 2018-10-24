@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class NotebookListViewController: UIViewController {
     
+    // MARK: IBOulets
     @IBOutlet weak var tableView: UITableView!
     
-    var modelNotebook: [Notebook] = []{
+    // MARK: Properties
+    var managedContext: NSManagedObjectContext! // Beware to have a value before presenting the VC
+    
+    var modelNotebook: [NotebookOld] = []{
         didSet{
             tableView.reloadData()
         }
@@ -20,7 +25,7 @@ class NotebookListViewController: UIViewController {
     
     override func viewDidLoad() {
         // Load data in the model (Notebooks)
-        modelNotebook = Notebook.dummyNotebookModel
+        modelNotebook = NotebookOld.dummyNotebookModel
         
         // Show by code, the title in action bar
         navigationController?.navigationBar.prefersLargeTitles = true

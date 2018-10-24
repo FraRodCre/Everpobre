@@ -18,9 +18,9 @@ class NotesListViewController: UIViewController {
         return tableView
     }()
     
-    let notebook: Notebook
+    let notebook: NotebookOld
     
-    var notes: [Note] = [] {
+    var notes: [NoteOld] = [] {
         // When reset reload data
         didSet {
             tableView.reloadData()
@@ -28,7 +28,7 @@ class NotesListViewController: UIViewController {
     }
     
     // MARK: Initializers (Markers)
-    init(notebook: Notebook) {
+    init(notebook: NotebookOld) {
         self.notebook = notebook
         super.init(nibName: nil, bundle: nil)
     }
