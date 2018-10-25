@@ -144,7 +144,7 @@ extension NotebookListViewController: UITableViewDelegate {
         show(notesListVC, sender: nil)*/
         
         let notebook = dataSource[indexPath.row] as! Notebook
-        let notesListVC = NotesListViewController(notebook: notebook)
+        let notesListVC = NotesListViewController(notebook: notebook, managedContext: managedContext)
         show(notesListVC, sender: nil)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NotesListViewController: UIViewController {
     // Create a tableView by code
@@ -19,6 +20,7 @@ class NotesListViewController: UIViewController {
     }()
     
     let notebook: Notebook //NotebookOld
+    let managedContext: NSManagedObjectContext
     
     /* Notes before Coredata
      var notes: [NoteOld] = [] {
@@ -35,8 +37,9 @@ class NotesListViewController: UIViewController {
     }
     
     // MARK: Initializers (Markers)
-    init(notebook: Notebook /*NotebookOld*/) {
+    init(notebook: Notebook /*NotebookOld*/, managedContext: NSManagedObjectContext) {
         self.notebook = notebook
+        self.managedContext = managedContext
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,7 +63,7 @@ class NotesListViewController: UIViewController {
     }
     
     @objc private func addNote() {
-        let newNoteVC = NoteDetailsViewController(kind: .new)
+        let newNoteVC = NoteDetailsViewController(kind: .new(notebook: notebook), managedContext: managedContext)
         let navVC = UINavigationController(rootViewController: newNoteVC)
         present(navVC, animated: true, completion: nil)
     }
@@ -98,7 +101,7 @@ extension NotesListViewController: UITableViewDelegate {
         // Get note to show
         //let detailVC = NoteDetailsViewController(note: notes[indexPath.row]) // Before coreData
         
-        let detailVC = NoteDetailsViewController(kind: .existing(notes[indexPath.row]))
+        let detailVC = NoteDetailsViewController(kind: .existing(note: notes[indexPath.row]), managedContext: managedContext)
         show(detailVC, sender: nil)
     }
 }

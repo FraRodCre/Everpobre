@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NoteDetailsViewController: UIViewController {
     
@@ -23,11 +24,13 @@ class NoteDetailsViewController: UIViewController {
     //let note: NoteOld // Before coredata
     //let note: Note // Before coreData
     enum Kind {
-        case new
-        case existing(Note)
+        case new(notebook: Notebook)
+        case existing(note: Note)
     }
-    
+
     let kind: Kind
+    let managedContext: NSManagedObjectContext
+    
     
     // MARK: Initializers (Markers)
     /* Before coreData
@@ -36,8 +39,9 @@ class NoteDetailsViewController: UIViewController {
         super.init(nibName: "NoteDetailsViewController", bundle: nil)
     }*/
     
-    init (kind: Kind) {
+    init (kind: Kind, managedContext: NSManagedObjectContext) {
         self.kind = kind
+        self.managedContext = managedContext
         super.init(nibName: "NoteDetailsViewController", bundle: nil)
     }
     
