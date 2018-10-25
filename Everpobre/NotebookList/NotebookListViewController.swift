@@ -25,7 +25,12 @@ class NotebookListViewController: UIViewController {
         }
     }*/
     
-    var dataSource: [NSManagedObject] = []
+    var dataSource: [NSManagedObject] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     
     override func viewDidLoad() {
         // Load data in the model (Notebooks) without coreData
@@ -37,7 +42,21 @@ class NotebookListViewController: UIViewController {
         
         super.viewDidLoad()
         
-        reloadView()
+        configureSearchController()
+        showAll()
+        //reloadView()
+    }
+    
+    private func configureSearchController(){
+        // Add button search
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Buscar Notebook"
+        navigationItem.searchController = search
+        navigationItem.hidesSearchBarWhenScrolling = true
+        definesPresentationContext = true
+        
     }
     
     // MARK: IBAction
@@ -68,7 +87,8 @@ class NotebookListViewController: UIViewController {
             
             //self.tableView.reloadData()
             // Reload date table and count Notebook
-            self.reloadView()
+            //self.reloadView()
+            self.showAll()
         }
         
         let  cancelAction = UIAlertAction(title: "Cancelar", style: .default)
@@ -94,7 +114,7 @@ class NotebookListViewController: UIViewController {
         tableView.reloadData()
     }
     
-    private func populateTotalLabel(){
+    private func populateTotalLabel(with predicate: NSPredicate = NSPredicate(value: true)){
         let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Notebook")
         fetchRequest.resultType = .countResultType
         
@@ -152,7 +172,8 @@ extension NotebookListViewController: UITableViewDataSource{
         }
         
         //tableView.reloadData()
-        self.reloadView()
+        //self.reloadView()
+        showAll()
     }
 }
 
@@ -175,5 +196,55 @@ extension NotebookListViewController: UITableViewDelegate {
         let notebook = dataSource[indexPath.row] as! Notebook
         let notesListVC = NotesListViewController(notebook: notebook, managedContext: managedContext)
         show(notesListVC, sender: nil)
+    }
+}
+
+extension NotebookListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text, !text.isEmpty {
+            // Show filtered results
+            showFileteredResults(with: text)
+        } else {
+            // Show all results
+            showAll()
+        }
+    }
+    
+    private func showFileteredResults(with query: String) {
+        let fetchRequest = NSFetchRequest<Notebook>(entityName: "Notebook")
+        fetchRequest.resultType = .managedObjectResultType
+        
+        let predicate = NSPredicate(format: "name CONTAINS[c] %@", query)
+        fetchRequest.predicate = predicate
+        
+        do {
+            dataSource = try managedContext.fetch(Notebook.fetchRequest())
+        }catch let error as NSError {
+            print("Could not fetch \(error)")
+            dataSource = []
+        }
+        
+        populateTotalLabel(with: predicate)
+    }
+    
+    private func showAll() {
+        
+        let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: Notebook.fetchRequest()) {
+            [weak self] (result) in
+            guard let notebooks = result.finalResult else {
+                self?.dataSource = []
+                return
+            }
+            self?.dataSource = notebooks
+        }
+        
+        do {
+            //dataSource = try managedContext.fetch(Notebook.fetchRequest())
+            try managedContext.execute(asyncFetchRequest)
+        }catch let error as NSError {
+            print("Could not fetch \(error)")
+            dataSource = []
+        }
+        populateTotalLabel()
     }
 }
