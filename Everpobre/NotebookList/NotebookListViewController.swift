@@ -13,6 +13,7 @@ class NotebookListViewController: UIViewController {
     
     // MARK: IBOulets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var totalLabel: UILabel!
     
     // MARK: Properties
     var managedContext: NSManagedObjectContext! // Beware to have a value before presenting the VC
@@ -24,15 +25,21 @@ class NotebookListViewController: UIViewController {
         }
     }*/
     
-    var dataSource: [NSManagedObject] {
-        do {
-            return try managedContext.fetch(Notebook.fetchRequest())
-        } catch let error as NSError {
-            print(error.localizedDescription)
-            return []
-        }
+    var dataSource: [NSManagedObject] = []
+    
+    override func viewDidLoad() {
+        // Load data in the model (Notebooks) without coreData
+        //modelNotebook = NotebookOld.dummyNotebookModel
+        
+        // Show by code, the title in action bar
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        
+        super.viewDidLoad()
+        
+        reloadView()
     }
-
+    
     // MARK: IBAction
     @IBAction func addNotebook(_ sender: UIBarButtonItem) {
         // Code implementation for add a note
@@ -46,7 +53,7 @@ class NotebookListViewController: UIViewController {
                 // Input in alert for get name of a Notebook
                 let textField = alert.textFields?.first,
                 let nameToSave = textField.text
-            else { return }
+                else { return }
             
             // Instance note
             let notebook = Notebook(context: self.managedContext)
@@ -59,7 +66,9 @@ class NotebookListViewController: UIViewController {
                 print("TODO Error handling \(error.debugDescription)")
             }
             
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
+            // Reload date table and count Notebook
+            self.reloadView()
         }
         
         let  cancelAction = UIAlertAction(title: "Cancelar", style: .default)
@@ -72,16 +81,33 @@ class NotebookListViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    private func reloadView(){
+        do {
+            dataSource = try managedContext.fetch(Notebook.fetchRequest())
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            dataSource =  []
+        }
+        
+        populateTotalLabel()
+        
+        tableView.reloadData()
+    }
     
-    override func viewDidLoad() {
-        // Load data in the model (Notebooks) without coreData
-        //modelNotebook = NotebookOld.dummyNotebookModel
+    private func populateTotalLabel(){
+        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Notebook")
+        fetchRequest.resultType = .countResultType
         
-        // Show by code, the title in action bar
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        let predicate = NSPredicate(value: true)
+        fetchRequest.predicate = predicate
         
-        super.viewDidLoad()
+        do{
+            let countResult = try managedContext.fetch(fetchRequest)
+            let count = countResult.first!.intValue
+            totalLabel.text = "\(count)"
+        }catch let error as NSError {
+            print("Count not  fetch: \(error)")
+        }
     }
     
 }
@@ -120,10 +146,13 @@ extension NotebookListViewController: UITableViewDataSource{
         
         do {
             try managedContext.save()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            //tableView.deleteRows(at: [indexPath], with: .automatic)
         } catch let error as NSError {
             print("error: \(error.localizedDescription)")
         }
+        
+        //tableView.reloadData()
+        self.reloadView()
     }
 }
 
