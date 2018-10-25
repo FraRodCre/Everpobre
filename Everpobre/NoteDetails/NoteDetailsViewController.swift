@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol  NoteDetailsViewControllerProtocol: class {
+    func didSaveNote()
+}
+
 class NoteDetailsViewController: UIViewController {
     
     // MARK: IBOulets
@@ -30,6 +34,8 @@ class NoteDetailsViewController: UIViewController {
 
     let kind: Kind
     let managedContext: NSManagedObjectContext
+    
+    weak var delegate: NoteDetailsViewControllerProtocol?
     
     
     // MARK: Initializers (Markers)
@@ -72,7 +78,46 @@ class NoteDetailsViewController: UIViewController {
     }
     
     @objc private func saveNote() {
-        
+        switch kind {
+        case .existing(let note):
+            
+            note.title = titleTextField.text
+            note.text = descriptionTextView.text
+            note.lastSeenDate = NSDate()
+            
+            // save context
+            do {
+               try managedContext.save()
+                delegate?.didSaveNote()
+            }catch let error as NSError {
+                print("Error: \(error.localizedDescription)")
+            }
+            
+            navigationController?.popViewController(animated: true)
+            
+        case .new(let notebook):
+            let note = Note(context: managedContext)
+            note.title = titleTextField.text
+            note.text = descriptionTextView.text
+            note.creationDate = NSDate()
+            note.notebook = notebook
+            
+            if let notes = notebook.notes?.mutableCopy() as? NSMutableOrderedSet {
+                notes.add(note)
+                notebook.notes = notes
+            }
+            
+            // save context
+            do {
+                try managedContext.save()
+                delegate?.didSaveNote()
+            }catch let error as NSError {
+                print("Error: \(error.localizedDescription)")
+            }
+            
+            dismiss(animated: true, completion: nil)
+            
+        }
     }
     
     @objc private func cancel() {
@@ -82,7 +127,7 @@ class NoteDetailsViewController: UIViewController {
     private func configureValues() {
         title = kind.title
         
-        titleTextField.text = kind.note?.text
+        titleTextField.text = kind.note?.title
         /*tagsLabel.text = note.tags?.joined(separator: ",")
          creationDateLabel.text = note.creationDate.dateToString()
          lastSeenDateLabel.text = note.lastSeenDate?.dateToString() ?? ""*/

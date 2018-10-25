@@ -28,17 +28,24 @@ class NotesListViewController: UIViewController {
         didSet {
             tableView.reloadData()
         }
-    }*/
-    
+    }
+    **** with coreData before save note
     var notes: [Note] {
         guard let notes = notebook.notes?.array else { return [] }
         
         return notes as! [Note]
+    }*/
+    
+    var notes: [Note] {
+        didSet {
+            tableView.reloadData()
+        }
     }
     
     // MARK: Initializers (Markers)
     init(notebook: Notebook /*NotebookOld*/, managedContext: NSManagedObjectContext) {
         self.notebook = notebook
+        self.notes = (notebook.notes?.array as? [Note]) ?? []
         self.managedContext = managedContext
         super.init(nibName: nil, bundle: nil)
     }
@@ -64,6 +71,8 @@ class NotesListViewController: UIViewController {
     
     @objc private func addNote() {
         let newNoteVC = NoteDetailsViewController(kind: .new(notebook: notebook), managedContext: managedContext)
+        // Refresh list of notes later to save
+        newNoteVC.delegate = self
         let navVC = UINavigationController(rootViewController: newNoteVC)
         present(navVC, animated: true, completion: nil)
     }
@@ -102,6 +111,14 @@ extension NotesListViewController: UITableViewDelegate {
         //let detailVC = NoteDetailsViewController(note: notes[indexPath.row]) // Before coreData
         
         let detailVC = NoteDetailsViewController(kind: .existing(note: notes[indexPath.row]), managedContext: managedContext)
+        detailVC.delegate = self
         show(detailVC, sender: nil)
     }
+}
+
+extension NotesListViewController: NoteDetailsViewControllerProtocol {
+    func didSaveNote() {
+        self.notes = (notebook.notes?.array as? [Note]) ?? []
+    }
+    
 }
