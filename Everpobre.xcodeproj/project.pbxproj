@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411F0A73218CE41500ECB08D /* NoteListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411F0A71218CE41500ECB08D /* NoteListCollectionViewController.swift */; };
+		411F0A74218CE41500ECB08D /* NoteListCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 411F0A72218CE41500ECB08D /* NoteListCollectionViewController.xib */; };
+		411F0A77218CEB7300ECB08D /* NotesListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411F0A75218CEB7300ECB08D /* NotesListCollectionViewCell.swift */; };
+		411F0A78218CEB7300ECB08D /* NotesListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 411F0A76218CEB7300ECB08D /* NotesListCollectionViewCell.xib */; };
 		411FDB39217B3C3000B5ABD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB38217B3C3000B5ABD5 /* AppDelegate.swift */; };
 		411FDB3E217B3C3000B5ABD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411FDB3C217B3C3000B5ABD5 /* Main.storyboard */; };
 		411FDB40217B3C3500B5ABD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 411FDB3F217B3C3500B5ABD5 /* Assets.xcassets */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		411F0A71218CE41500ECB08D /* NoteListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListCollectionViewController.swift; sourceTree = "<group>"; };
+		411F0A72218CE41500ECB08D /* NoteListCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteListCollectionViewController.xib; sourceTree = "<group>"; };
+		411F0A75218CEB7300ECB08D /* NotesListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListCollectionViewCell.swift; sourceTree = "<group>"; };
+		411F0A76218CEB7300ECB08D /* NotesListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesListCollectionViewCell.xib; sourceTree = "<group>"; };
 		411FDB35217B3C3000B5ABD5 /* Everpobre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everpobre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		411FDB38217B3C3000B5ABD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		411FDB3D217B3C3000B5ABD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				4130AFD4217E7FA900C56B4A /* NotesListViewController.swift */,
+				411F0A71218CE41500ECB08D /* NoteListCollectionViewController.swift */,
+				411F0A72218CE41500ECB08D /* NoteListCollectionViewController.xib */,
+				411F0A75218CEB7300ECB08D /* NotesListCollectionViewCell.swift */,
+				411F0A76218CEB7300ECB08D /* NotesListCollectionViewCell.xib */,
 			);
 			path = NotesList;
 			sourceTree = "<group>";
@@ -212,7 +224,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411F0A74218CE41500ECB08D /* NoteListCollectionViewController.xib in Resources */,
 				411FDB43217B3C3500B5ABD5 /* LaunchScreen.storyboard in Resources */,
+				411F0A78218CEB7300ECB08D /* NotesListCollectionViewCell.xib in Resources */,
 				4130AFDB217E8DB200C56B4A /* NoteDetailsViewController.xib in Resources */,
 				411FDB40217B3C3500B5ABD5 /* Assets.xcassets in Resources */,
 				411FDB3E217B3C3000B5ABD5 /* Main.storyboard in Resources */,
@@ -226,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411F0A77218CEB7300ECB08D /* NotesListCollectionViewCell.swift in Sources */,
 				411FDB4C217B9B5A00B5ABD5 /* NotebookListViewController.swift in Sources */,
 				411FDB56217E730D00B5ABD5 /* UtilsFunctions.swift in Sources */,
 				4130AFDA217E8DB100C56B4A /* NoteDetailsViewController.swift in Sources */,
@@ -240,6 +255,7 @@
 				411FDB51217E653F00B5ABD5 /* NotebookOld.swift in Sources */,
 				4165DDD3217FD195007B62D5 /* Note+CoreDataClass.swift in Sources */,
 				411FDB54217E719500B5ABD5 /* Identifiers.swift in Sources */,
+				411F0A73218CE41500ECB08D /* NoteListCollectionViewController.swift in Sources */,
 				411FDB4E217E503F00B5ABD5 /* NotebookListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
