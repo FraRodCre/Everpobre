@@ -32,6 +32,7 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="96p-yJ-lal" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Roa-7y-rr8"/>
                 <constraint firstAttribute="bottom" secondItem="96p-yJ-lal" secondAttribute="bottom" constant="20" id="YWM-7Z-eII"/>

@@ -42,7 +42,8 @@ class NotebookListViewController: UIViewController {
         fetchRequest.sortDescriptors = [sort]
         fetchRequest.fetchBatchSize = 20
         
-        return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        // sectionNameKeyPath-> Return sections by date
+        return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: #keyPath(Notebook.creationDate), cacheName: nil)
     }
     
     private func setNewFetchedResultsController(_ newfrc: NSFetchedResultsController<Notebook>) {
@@ -164,6 +165,11 @@ class NotebookListViewController: UIViewController {
 // MARK: UITableViewDataSource implementation
 extension NotebookListViewController: UITableViewDataSource{
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard let section = fetchedResultsController.sections else { return 1 }
+        return section.count
+    }
+    
     // Number of sections
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return dataSource.count //modelNotebook.count
@@ -236,6 +242,13 @@ extension NotebookListViewController: UITableViewDelegate {
         let notesListVC = NoteListCollectionViewController(notebook: notebook, managedContext: managedContext)
         show(notesListVC, sender: nil)
     }
+    
+    // Create a header
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = fetchedResultsController.sections?[section]
+        return sectionInfo?.name
+    }
+    
 }
 
 extension NotebookListViewController: UISearchResultsUpdating {
@@ -323,6 +336,20 @@ extension NotebookListViewController:NSFetchedResultsControllerDelegate {
             break
         }
     }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        let indexSet = IndexSet(integer: sectionIndex)
+        switch type {
+        case .insert:
+            tableView.insertSections(indexSet, with: .automatic)
+        case .delete:
+            tableView.deleteSections(indexSet, with: .automatic)
+        default:
+            break
+        }
+    }
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
     }
