@@ -12,7 +12,6 @@
 		411F0A77218CEB7300ECB08D /* NotesListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411F0A75218CEB7300ECB08D /* NotesListCollectionViewCell.swift */; };
 		411F0A78218CEB7300ECB08D /* NotesListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 411F0A76218CEB7300ECB08D /* NotesListCollectionViewCell.xib */; };
 		411F0A81218D159200ECB08D /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411F0A80218D159200ECB08D /* Note+CoreDataProperties.swift */; };
-		411F0A83218D15E100ECB08D /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411F0A82218D15E100ECB08D /* Note+CoreDataProperties.swift */; };
 		411FDB39217B3C3000B5ABD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411FDB38217B3C3000B5ABD5 /* AppDelegate.swift */; };
 		411FDB3E217B3C3000B5ABD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411FDB3C217B3C3000B5ABD5 /* Main.storyboard */; };
 		411FDB40217B3C3500B5ABD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 411FDB3F217B3C3500B5ABD5 /* Assets.xcassets */; };
@@ -197,7 +196,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Fco_Javier_Rodriguez;
 				TargetAttributes = {
 					411FDB34217B3C3000B5ABD5 = {
@@ -261,7 +260,6 @@
 				411F0A73218CE41500ECB08D /* NoteListCollectionViewController.swift in Sources */,
 				411FDB4E217E503F00B5ABD5 /* NotebookListCell.swift in Sources */,
 				411F0A81218D159200ECB08D /* Note+CoreDataProperties.swift in Sources */,
-				411F0A83218D15E100ECB08D /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

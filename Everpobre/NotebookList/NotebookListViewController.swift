@@ -16,7 +16,9 @@ class NotebookListViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     
     // MARK: Properties
-    var managedContext: NSManagedObjectContext! // Beware to have a value before presenting the VC
+    //var managedContext: NSManagedObjectContext! // Beware to have a value before presenting the VC
+    
+    var coredataStack: CoreDataStack!
     
     /* *** This model is not used because the model now is the model created with coredata ***
      var modelNotebook: [NotebookOld] = []{
@@ -42,8 +44,8 @@ class NotebookListViewController: UIViewController {
         fetchRequest.sortDescriptors = [sort]
         fetchRequest.fetchBatchSize = 20
         
-        // sectionNameKeyPath-> Return sections by date
-        return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: #keyPath(Notebook.creationDate), cacheName: nil)
+        // sectionNameKeyPath-> Param used for order by group
+        return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coredataStack.managedContext, sectionNameKeyPath: #keyPath(Notebook.creationDate), cacheName: nil)
     }
     
     private func setNewFetchedResultsController(_ newfrc: NSFetchedResultsController<Notebook>) {
@@ -105,12 +107,13 @@ class NotebookListViewController: UIViewController {
                 else { return }
             
             // Instance note
-            let notebook = Notebook(context: self.managedContext)
+            //let notebook = Notebook(context: self.managedContext)
+            let notebook = Notebook(context: self.coredataStack.managedContext)
             notebook.name = nameToSave
             notebook.creationDate = NSDate()
             
             do {
-                try self.managedContext.save()
+                try self.coredataStack.managedContext.save()
             } catch let error as NSError {
                 print("TODO Error handling \(error.debugDescription)")
             }
@@ -152,7 +155,7 @@ class NotebookListViewController: UIViewController {
         fetchRequest.predicate = predicate
         
         do{
-            let countResult = try managedContext.fetch(fetchRequest)
+            let countResult = try coredataStack.managedContext.fetch(fetchRequest)
             let count = countResult.first!.intValue
             totalLabel.text = "\(count)"
         }catch let error as NSError {
@@ -204,10 +207,10 @@ extension NotebookListViewController: UITableViewDataSource{
         
         guard editingStyle == .delete else {  return }
         let notebookToRemove = fetchedResultsController.object(at: indexPath)
-        managedContext.delete(notebookToRemove)
+        coredataStack.managedContext.delete(notebookToRemove)
         
         do {
-            try managedContext.save()
+            try coredataStack.managedContext.save()
             //tableView.deleteRows(at: [indexPath], with: .automatic)
         } catch let error as NSError {
             print("error: \(error.localizedDescription)")
@@ -239,7 +242,7 @@ extension NotebookListViewController: UITableViewDelegate {
         let notebook = fetchedResultsController.object(at: indexPath)
         
         /*let notesListVC = NotesListViewController(notebook: notebook, managedContext: managedContext)*/
-        let notesListVC = NoteListCollectionViewController(notebook: notebook, managedContext: managedContext)
+        let notesListVC = NoteListCollectionViewController(notebook: notebook, coreDataStack: coredataStack)
         show(notesListVC, sender: nil)
     }
     
