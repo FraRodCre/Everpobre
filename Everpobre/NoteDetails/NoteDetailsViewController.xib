@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,13 +29,37 @@
                 <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="am3-d5-iYt" userLabel="Tarjeta">
                     <rect key="frame" x="20" y="40" width="335" height="180"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="120x180" translatesAutoresizingMaskIntoConstraints="NO" id="NwJ-0x-NQp">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4J-Yx-YHL">
                             <rect key="frame" x="0.0" y="0.0" width="120" height="180"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="120x180" translatesAutoresizingMaskIntoConstraints="NO" id="NwJ-0x-NQp">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="180"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgk-JQ-Rlh">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="180"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <state key="normal" title="Edit">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="pickImage:" destination="-1" eventType="touchUpInside" id="3Sn-aG-5Is"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="NwJ-0x-NQp" secondAttribute="height" multiplier="1:1.5" id="FZP-xj-jn0"/>
-                                <constraint firstAttribute="width" constant="120" id="XZ4-ga-mQC"/>
+                                <constraint firstItem="NwJ-0x-NQp" firstAttribute="leading" secondItem="s4J-Yx-YHL" secondAttribute="leading" id="7ud-NX-8bu"/>
+                                <constraint firstAttribute="bottom" secondItem="NwJ-0x-NQp" secondAttribute="bottom" id="Ekq-Kf-tgz"/>
+                                <constraint firstItem="Mgk-JQ-Rlh" firstAttribute="leading" secondItem="s4J-Yx-YHL" secondAttribute="leading" id="IcE-AQ-keK"/>
+                                <constraint firstItem="Mgk-JQ-Rlh" firstAttribute="top" secondItem="s4J-Yx-YHL" secondAttribute="top" id="Nhg-UJ-bPD"/>
+                                <constraint firstAttribute="trailing" secondItem="Mgk-JQ-Rlh" secondAttribute="trailing" id="R6k-Jv-uQh"/>
+                                <constraint firstAttribute="width" constant="120" id="WF0-UA-6xI"/>
+                                <constraint firstAttribute="height" constant="180" id="hma-hp-lvg"/>
+                                <constraint firstAttribute="bottom" secondItem="Mgk-JQ-Rlh" secondAttribute="bottom" id="jlk-4v-Glf"/>
+                                <constraint firstAttribute="trailing" secondItem="NwJ-0x-NQp" secondAttribute="trailing" id="oJ9-iN-hXB"/>
+                                <constraint firstItem="NwJ-0x-NQp" firstAttribute="top" secondItem="s4J-Yx-YHL" secondAttribute="top" id="tMT-Bq-U1g"/>
                             </constraints>
-                        </imageView>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="V2m-LD-fSP" userLabel="Datos">
                             <rect key="frame" x="128" y="0.0" width="207" height="180"/>
                             <subviews>
@@ -150,6 +174,6 @@
         </view>
     </objects>
     <resources>
-        <image name="120x180" width="120" height="180"/>
+        <image name="120x180" width="90" height="135"/>
     </resources>
 </document>
