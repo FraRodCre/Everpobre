@@ -33,6 +33,7 @@
 		41C22753218E1DCB00D5D833 /* UIImage+ReSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C22750218E1DC900D5D833 /* UIImage+ReSize.swift */; };
 		41C22754218E1DCB00D5D833 /* UIImage+RoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C22751218E1DC900D5D833 /* UIImage+RoundCorner.swift */; };
 		41C22755218E1DCB00D5D833 /* UIImage+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C22752218E1DCA00D5D833 /* UIImage+Alpha.swift */; };
+		41C22757218E64EA00D5D833 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C22756218E64EA00D5D833 /* Animator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		41C22750218E1DC900D5D833 /* UIImage+ReSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ReSize.swift"; sourceTree = "<group>"; };
 		41C22751218E1DC900D5D833 /* UIImage+RoundCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RoundCorner.swift"; sourceTree = "<group>"; };
 		41C22752218E1DCA00D5D833 /* UIImage+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Alpha.swift"; sourceTree = "<group>"; };
+		41C22756218E64EA00D5D833 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				411FDB53217E719500B5ABD5 /* Identifiers.swift */,
 				411FDB55217E730D00B5ABD5 /* UtilsFunctions.swift */,
 				4165DDC9217F83AC007B62D5 /* CoreDataStack.swift */,
+				41C22756218E64EA00D5D833 /* Animator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				4165DDCE217FCD44007B62D5 /* Everpobre.xcdatamodeld in Sources */,
 				4165DDCA217F83AC007B62D5 /* CoreDataStack.swift in Sources */,
 				4130AFD5217E7FA900C56B4A /* NotesListViewController.swift in Sources */,
+				41C22757218E64EA00D5D833 /* Animator.swift in Sources */,
 				41C22755218E1DCB00D5D833 /* UIImage+Alpha.swift in Sources */,
 				411FDB51217E653F00B5ABD5 /* NotebookOld.swift in Sources */,
 				41C22754218E1DCB00D5D833 /* UIImage+RoundCorner.swift in Sources */,
