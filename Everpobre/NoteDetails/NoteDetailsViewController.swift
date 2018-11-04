@@ -126,9 +126,9 @@ class NoteDetailsViewController: UIViewController {
             
         case .new(let notebook):
             let note = Note(context: managedContext)
+            note.creationDate = NSDate()
             /*note.title = titleTextField.text
             note.text = descriptionTextView.text
-            note.creationDate = NSDate()
              note.notebook = notebook */
             let modifiedNote = addProperties(to: note)
             modifiedNote.notebook = notebook
@@ -330,3 +330,4 @@ extension NoteDetailsViewController: UIPickerViewDelegate {
         tagID = Tag.allCases[row].rawValue
     }
 }
+

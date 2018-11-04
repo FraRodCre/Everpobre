@@ -16,7 +16,8 @@ class NotePointMap: MKPointAnnotation {
     
     init(with note: Note) {
         self.note = note
-        
+        //let lat: Double = 37.3828300
+        //let long: Double = -5.9731700
         super.init()
         
         self.coordinate = CLLocationCoordinate2D(latitude: note.latitude, longitude: note.longitude)

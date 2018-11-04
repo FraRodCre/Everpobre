@@ -33,7 +33,27 @@ class NotebookListViewController: UIViewController {
         }
     }*/
     
-    private var fetchedResultsController: NSFetchedResultsController<Notebook>!
+    var fetchedResultsController: NSFetchedResultsController<Notebook>!
+    
+    override func viewDidLoad() {
+        // Load data in the model (Notebooks) without coreData
+        //modelNotebook = NotebookOld.dummyNotebookModel
+        
+        // Show by code, the title in action bar
+        //navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationItem.largeTitleDisplayMode = .always
+        
+        super.viewDidLoad()
+        
+        let exportButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportNotebooks))
+        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNotebook))
+        navigationItem.rightBarButtonItems = [addButtonItem, exportButtonItem]
+        
+        configureSearchController()
+        /*showAll()
+        populateTotalLabel()*/
+        reloadView()
+    }
     
     // Get values necesary for complete the table (This do of "datasource")
     private func getFecthedResultsController(with predicate: NSPredicate = NSPredicate(value: true)) -> NSFetchedResultsController<Notebook> {
@@ -57,26 +77,27 @@ class NotebookListViewController: UIViewController {
             
             do {
                 try fetchedResultsController.performFetch()
+                tableView.reloadData()
             } catch let error as NSError {
                 print("Could not fetch \(error)")
             }
-            tableView.reloadData()
+            
         }
     }
     
-    override func viewDidLoad() {
-        // Load data in the model (Notebooks) without coreData
-        //modelNotebook = NotebookOld.dummyNotebookModel
-        
-        // Show by code, the title in action bar
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
-        
-        super.viewDidLoad()
-        
-        configureSearchController()
+    private func showAll(){
+        let frc = getFecthedResultsController()
+        setNewFetchedResultsController(frc)
+    }
+    
+    private func populateTotalLabel() {
+        totalLabel.text = "\(fetchedResultsController.fetchedObjects?.count ?? 0)"
+    }
+    
+    private func reloadView() {
         showAll()
-        //reloadView()
+        
+        populateTotalLabel()
     }
     
     private func configureSearchController(){
@@ -88,7 +109,6 @@ class NotebookListViewController: UIViewController {
         navigationItem.searchController = search
         navigationItem.hidesSearchBarWhenScrolling = true
         definesPresentationContext = true
-        
     }
     
     // MARK: IBAction
@@ -120,9 +140,10 @@ class NotebookListViewController: UIViewController {
             
             //self.tableView.reloadData()
             // Reload date table and count Notebook
-            //self.reloadView()
-            self.showAll()
+            self.reloadView()
+            
         }
+        
         
         let  cancelAction = UIAlertAction(title: "Cancelar", style: .default)
         
@@ -134,6 +155,23 @@ class NotebookListViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    @objc private func exportNotebooks() {
+        var results: [Notebook] = []
+        do {
+            results = try self.coredataStack.managedContext.fetch(Notebook.fetchRequest())
+            
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
+        
+        var csv = ""
+        for notebook in results {
+            csv = "\(csv)\(notebook.csv())"
+        }
+        
+        let activityView = UIActivityViewController(activityItems: [csv], applicationActivities: nil)
+        self.present(activityView, animated: true)
+    }
     /*private func reloadView(){
         do {
             dataSource = try managedContext.fetch(Notebook.fetchRequest())
@@ -147,7 +185,7 @@ class NotebookListViewController: UIViewController {
         tableView.reloadData()
     }*/
     
-    private func populateTotalLabel(with predicate: NSPredicate = NSPredicate(value: true)){
+    /*private func populateTotalLabel(with predicate: NSPredicate = NSPredicate(value: true)){
         let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Notebook")
         fetchRequest.resultType = .countResultType
         
@@ -161,7 +199,7 @@ class NotebookListViewController: UIViewController {
         }catch let error as NSError {
             print("Count not  fetch: \(error)")
         }
-    }
+    }*/
     
 }
 
@@ -193,10 +231,10 @@ extension NotebookListViewController: UITableViewDataSource{
         
         return cell
     }
-    // Activate edition of a cell (Edition Notebook)
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    // Activate edition of a cell (Edition Notebook - default is true)
+    /*func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }
+    }*/
     
     // Activate removal of a cell (Removel Notebook)
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -217,8 +255,12 @@ extension NotebookListViewController: UITableViewDataSource{
         }
         
         //tableView.reloadData()
-        //self.reloadView()
-        showAll()
+        self.reloadView()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = fetchedResultsController.sections?[section]
+        return sectionInfo?.name
     }
 }
 
@@ -243,19 +285,13 @@ extension NotebookListViewController: UITableViewDelegate {
         
         let tabBarListOrMapVC = ListOrMapNotesTBC(notebook: notebook, coreDataStack: coredataStack)
         self.navigationController?.pushViewController(tabBarListOrMapVC, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
         
         /*let notesListVC = NotesListViewController(notebook: notebook, managedContext: managedContext)
         let notesListVC = NoteListCollectionViewController(notebook: notebook, coreDataStack: coredataStack)
         show(notesListVC, sender: nil)*/
     }
-    
-    // Create a header
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionInfo = fetchedResultsController.sections?[section]
-        return sectionInfo?.name
-    }
-    
+   
 }
 
 extension NotebookListViewController: UISearchResultsUpdating {
@@ -265,7 +301,7 @@ extension NotebookListViewController: UISearchResultsUpdating {
             showFileteredResults(with: text)
         } else {
             // Show all results
-            showAll()
+            reloadView()
         }
     }
     
@@ -289,12 +325,12 @@ extension NotebookListViewController: UISearchResultsUpdating {
         let frc = getFecthedResultsController(with: predicate)
         setNewFetchedResultsController(frc)
         
-        populateTotalLabel(with: predicate)
+        populateTotalLabel()
         
         
     }
     
-    private func showAll() {
+  /*  private func showAll() {
         
         /*let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: Notebook.fetchRequest()) {
             [weak self] (result) in
@@ -324,10 +360,10 @@ extension NotebookListViewController: UISearchResultsUpdating {
             print("Could not fetch \(error)")
         }
         populateTotalLabel()
-    }
+    }*/
 }
 
-extension NotebookListViewController:NSFetchedResultsControllerDelegate {
+extension NotebookListViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()

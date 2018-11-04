@@ -18,19 +18,22 @@ class NoteListCollectionViewController: UIViewController {
     let notebook: Notebook
     //let managedContext: NSManagedObjectContext
     let coreDataStack: CoreDataStack!
+    var fetchedResultsController: NSFetchedResultsController<Note>
     
-    var notes: [Note] = [] {
+    /*var notes: [Note] = [] {
         didSet {
             self.collectionView.reloadData()
         }
-    }
+    }*/
     
     // MARK: Initializers (Markers)
-    init(notebook: Notebook, coreDataStack: CoreDataStack) {
+    init(notebook: Notebook, coreDataStack: CoreDataStack, fetchedResultsController: NSFetchedResultsController<Note>!) {
         self.notebook = notebook
-        self.notes = (notebook.notes?.array as? [Note]) ?? []
+        //self.notes = (notebook.notes?.array as? [Note]) ?? []
         self.coreDataStack = coreDataStack
-        super.init(nibName: "NoteListCollectionViewController", bundle:nil)
+        self.fetchedResultsController = fetchedResultsController
+        
+        super.init(nibName: nil, bundle:nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,19 +49,19 @@ class NoteListCollectionViewController: UIViewController {
         let nib = UINib(nibName: "NotesListCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "NotesListCollectionViewCell")
         
-        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
+        /*let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
         let exportButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportCSV))
-        self.navigationItem.rightBarButtonItems = [addButtonItem, exportButtonItem]
+        self.navigationItem.rightBarButtonItems = [addButtonItem, exportButtonItem]*/
         
-        setupUI()
+        setup()
     }
     
-    func setupUI() {
+    func setup() {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
-    @objc private func exportCSV(){
+    /*@objc private func exportCSV(){
         
         coreDataStack.storeContainer.performBackgroundTask{
             [unowned self] context in
@@ -128,17 +131,19 @@ class NoteListCollectionViewController: UIViewController {
         
         let navVC = UINavigationController(rootViewController: newNoteVC)
         self.present(navVC, animated: true, completion: nil)
-    }
+    }*/
 }
 
 extension NoteListCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return notes.count
+        //return notes.count
+        return (fetchedResultsController.fetchedObjects?.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesListCollectionViewCell", for: indexPath) as! NotesListCollectionViewCell
-        cell.configure(with: notes[indexPath.row])
+        cell.configure(with: fetchedResultsController.object(at: indexPath))
+        //cell.configure(with: notes[indexPath.row])
         
         return cell
     }
@@ -146,9 +151,14 @@ extension NoteListCollectionViewController: UICollectionViewDataSource {
 
 extension NoteListCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let note = fetchedResultsController.object(at: indexPath)
+        let detailNote = NoteDetailsViewController(kind: .existing(note: note), managedContext: coreDataStack.managedContext)
+        detailNote.delegate = tabBarController as! ListOrMapNotesTBC
+        self.navigationController?.pushViewController(detailNote, animated: true)
+        /*self.navigationController?.pushViewController(noteView, animated: true)
         let detailVC = NoteDetailsViewController(kind: .existing(note: notes[indexPath.row]), managedContext: coreDataStack.managedContext)
         detailVC.delegate = self
-        self.show(detailVC, sender: nil)
+        self.show(detailVC, sender: nil)*/
     }
 }
 
@@ -157,10 +167,9 @@ extension NoteListCollectionViewController: UICollectionViewDelegateFlowLayout{
         return CGSize(width: 100, height: 150)
     }
 }
-
-extension NoteListCollectionViewController: NoteDetailsViewControllerDelegate {
+/*extension NoteListCollectionViewController: NoteDetailsViewControllerDelegate {
     func didChangeNote() {
          self.notes = (notebook.notes?.array as? [Note]) ?? []
         collectionView.reloadData()
     }
-}
+}*/
