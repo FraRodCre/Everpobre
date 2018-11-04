@@ -11,7 +11,7 @@ import CoreData
 
 class NotesListViewController: UIViewController {
     // Create a tableView by code
-    lazy var tableView: UITableView = {
+    /*lazy var tableView: UITableView = {
         
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +43,7 @@ class NotesListViewController: UIViewController {
     }
     
     // MARK: Initializers (Markers)
-    init(notebook: Notebook /*NotebookOld*/, managedContext: NSManagedObjectContext) {
+   init(notebook: Notebook /*NotebookOld*/, managedContext: NSManagedObjectContext) {
         self.notebook = notebook
         self.notes = (notebook.notes?.array as? [Note]) ?? []
         self.managedContext = managedContext
@@ -121,4 +121,5 @@ extension NotesListViewController: NoteDetailsViewControllerProtocol {
         self.notes = (notebook.notes?.array as? [Note]) ?? []
     }
     
+}*/
 }

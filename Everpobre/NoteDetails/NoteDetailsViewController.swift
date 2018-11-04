@@ -9,8 +9,8 @@
 import UIKit
 import CoreData
 
-protocol  NoteDetailsViewControllerProtocol: class {
-    func didSaveNote()
+protocol NoteDetailsViewControllerDelegate: class {
+    func didChangeNote()
 }
 
 class NoteDetailsViewController: UIViewController {
@@ -19,7 +19,7 @@ class NoteDetailsViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var tagsLabel: UILabel!
+    @IBOutlet weak var tagsLabel: UITextField!
     @IBOutlet weak var creationDateLabel: UILabel!
     @IBOutlet weak var lastSeenDateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -34,8 +34,10 @@ class NoteDetailsViewController: UIViewController {
 
     let kind: Kind
     let managedContext: NSManagedObjectContext
+    var tagID: Int16?
     
-    weak var delegate: NoteDetailsViewControllerProtocol?
+    weak var delegate: NoteDetailsViewControllerDelegate?
+    //weak var delegate: NoteDetailsViewControllerProtocol?
     
     
     // MARK: Initializers (Markers)
@@ -58,16 +60,31 @@ class NoteDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Create Picker for tags
+        let pickerTag = UIPickerView()
+        tagsLabel.inputView = pickerTag
+        pickerTag.dataSource = self
+        pickerTag.delegate = self
+        
         configure()
     }
     
     // Change information of a note
     private func configure() {
-            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
+        let saveButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
+        
+        switch kind {
+        case .new:
             self.navigationItem.rightBarButtonItem = saveButtonItem
             
-            let cancelButtomItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-            navigationItem.leftBarButtonItem = cancelButtomItem
+            let cancelButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSave))
+            self.navigationItem.leftBarButtonItem = cancelButtonItem
+            
+        case .existing:
+            let deleteButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteNote))
+            self.navigationItem.rightBarButtonItems = [saveButtonItem, deleteButtonItem]
+        }
             configureValues()
     }
     
@@ -83,6 +100,10 @@ class NoteDetailsViewController: UIViewController {
                     imageData = NSData(data: data)
             } else { imageData = nil }
             note.image = imageData
+            
+            if let tag = tagID {
+                note.tags = tag
+            }
             
             return note
         }
@@ -113,7 +134,8 @@ class NoteDetailsViewController: UIViewController {
         // save context
         do {
             try managedContext.save()
-            delegate?.didSaveNote()
+            delegate?.didChangeNote()
+            //delegate?.didSaveNote()
         }catch let error as NSError {
             print("Error: \(error.localizedDescription)")
         }
@@ -126,8 +148,46 @@ class NoteDetailsViewController: UIViewController {
         }
     }
     
-    @objc private func cancel() {
+    @objc private func cancelSave() {
+        switch kind {
+        case .existing(let note):
+            let modifiedNote = note
+            modifiedNote.lastSeenDate = NSDate()
+        default:
+            break
+        }
+        
+        do {
+            try managedContext.save()
+            delegate?.didChangeNote()
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func deleteNote() {
+        switch kind {
+        case .existing(let note):
+            managedContext.delete(note)
+        default:
+            break
+        }
+        
+        do {
+            try managedContext.save()
+            delegate?.didChangeNote()
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
+        
+        switch kind {
+        case .existing:
+            navigationController?.popViewController(animated: true)
+        case .new:
+            dismiss(animated: true, completion: nil)
+        }
+        //dismiss(animated: true, completion: nil)
     }
     
     @IBAction func pickImage(_ sender: UIButton) {
@@ -238,5 +298,26 @@ extension NoteDetailsViewController: UIImagePickerControllerDelegate, UINavigati
         }
         
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension NoteDetailsViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Tag.allCases.count
+    }
+}
+
+extension NoteDetailsViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Tag.allCases[row].description
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        tagsLabel.text = Tag.allCases[row].description
+        tagID = Tag.allCases[row].rawValue
     }
 }

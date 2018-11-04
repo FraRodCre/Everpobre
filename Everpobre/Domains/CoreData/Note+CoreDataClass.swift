@@ -15,6 +15,22 @@ public class Note: NSManagedObject {
 
 }
 
+enum Tag: Int16, CaseIterable, CustomStringConvertible {
+    case Info = 1
+    case Personal = 2
+    case Otros = 3
+    case Todo = 4
+    
+    var description: String {
+        switch self {
+        case .Info: return "Info"
+        case .Personal: return "Personal"
+        case .Otros: return "Otros"
+        case .Todo: return "Todo"
+        }
+    }
+}
+
 extension Note {
     func csv() -> String {
         // Params to export

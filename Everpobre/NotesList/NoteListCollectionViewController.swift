@@ -151,8 +151,9 @@ extension NoteListCollectionViewController: UICollectionViewDelegateFlowLayout{
     }
 }
 
-extension NoteListCollectionViewController: NoteDetailsViewControllerProtocol {
-    func didSaveNote() {
-        self.notes = (notebook.notes?.array as? [Note]) ?? []
+extension NoteListCollectionViewController: NoteDetailsViewControllerDelegate {
+    func didChangeNote() {
+         self.notes = (notebook.notes?.array as? [Note]) ?? []
+        collectionView.reloadData()
     }
 }

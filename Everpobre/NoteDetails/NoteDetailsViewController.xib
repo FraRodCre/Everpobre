@@ -16,7 +16,7 @@
                 <outlet property="descriptionTextView" destination="JaF-mZ-ScM" id="tEC-op-Lez"/>
                 <outlet property="imageView" destination="NwJ-0x-NQp" id="IKP-ut-h8x"/>
                 <outlet property="lastSeenDateLabel" destination="7iJ-p0-6iL" id="jlN-EW-REu"/>
-                <outlet property="tagsLabel" destination="Zn7-xD-a6Z" id="qHm-Yk-OH0"/>
+                <outlet property="tagsLabel" destination="VQe-TG-whW" id="zQ6-QI-2hY"/>
                 <outlet property="titleTextField" destination="3Fn-8w-TLZ" id="aRh-N6-sIq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -60,14 +60,14 @@
                                 <constraint firstItem="NwJ-0x-NQp" firstAttribute="top" secondItem="s4J-Yx-YHL" secondAttribute="top" id="tMT-Bq-U1g"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="V2m-LD-fSP" userLabel="Datos">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V2m-LD-fSP" userLabel="Datos">
                             <rect key="frame" x="128" y="0.0" width="207" height="180"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QrK-9Z-WEW">
-                                    <rect key="frame" x="0.0" y="0.0" width="207" height="121"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QrK-9Z-WEW">
+                                    <rect key="frame" x="0.0" y="0.0" width="207" height="135"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JLN-HZ-DCg" userLabel="Titulo">
-                                            <rect key="frame" x="0.0" y="0.0" width="207" height="100.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="207" height="97"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adk-z7-rUS" userLabel="Titulo:">
                                                     <rect key="frame" x="0.0" y="0.0" width="207" height="20.5"/>
@@ -76,7 +76,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title label" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Fn-8w-TLZ">
-                                                    <rect key="frame" x="0.0" y="20.5" width="207" height="80"/>
+                                                    <rect key="frame" x="0.0" y="20.5" width="207" height="76.5"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -85,26 +85,26 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2lC-zC-GrZ" userLabel="Tags">
-                                            <rect key="frame" x="0.0" y="100.5" width="207" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="105" width="207" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Tags:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdk-0D-pcH" userLabel="Tags:">
-                                                    <rect key="frame" x="0.0" y="0.0" width="41" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="41" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags Placeholder" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zn7-xD-a6Z" userLabel="Tags Placeholder">
-                                                    <rect key="frame" x="49" y="0.0" width="158" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="tags" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQe-TG-whW">
+                                                    <rect key="frame" x="49" y="0.0" width="158" height="30"/>
                                                     <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nTS-Gd-JRg">
-                                    <rect key="frame" x="0.0" y="151" width="207" height="29"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nTS-Gd-JRg">
+                                    <rect key="frame" x="0.0" y="143" width="207" height="37"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gPb-CA-JWz">
                                             <rect key="frame" x="0.0" y="0.0" width="207" height="14.5"/>
@@ -125,7 +125,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="WIC-Im-nsk">
-                                            <rect key="frame" x="0.0" y="14.5" width="207" height="14.5"/>
+                                            <rect key="frame" x="0.0" y="22.5" width="207" height="14.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Visto por última vez:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cc7-4P-h11" userLabel="Last Seen Date:">
                                                     <rect key="frame" x="0.0" y="0.0" width="107.5" height="14.5"/>
