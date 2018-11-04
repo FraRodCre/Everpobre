@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 protocol NoteDetailsViewControllerDelegate: class {
     func didChangeNote()
@@ -35,6 +36,7 @@ class NoteDetailsViewController: UIViewController {
     let kind: Kind
     let managedContext: NSManagedObjectContext
     var tagID: Int16?
+    var coordinate: CLLocationCoordinate2D?
     
     weak var delegate: NoteDetailsViewControllerDelegate?
     //weak var delegate: NoteDetailsViewControllerProtocol?
@@ -103,6 +105,11 @@ class NoteDetailsViewController: UIViewController {
             
             if let tag = tagID {
                 note.tags = tag
+            }
+            
+            if let coordinate = coordinate {
+                note.longitude = coordinate.longitude
+                note.latitude = coordinate.latitude
             }
             
             return note
@@ -245,6 +252,8 @@ class NoteDetailsViewController: UIViewController {
         
         imageView.image = UIImage(data: data)
     }
+    
+    
 }
 
 private extension NoteDetailsViewController.Kind {

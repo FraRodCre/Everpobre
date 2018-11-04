@@ -241,9 +241,13 @@ extension NotebookListViewController: UITableViewDelegate {
         //let notebook = dataSource[indexPath.row] as! Notebook
         let notebook = fetchedResultsController.object(at: indexPath)
         
-        /*let notesListVC = NotesListViewController(notebook: notebook, managedContext: managedContext)*/
+        let tabBarListOrMapVC = ListOrMapNotesTBC(notebook: notebook, coreDataStack: coredataStack)
+        self.navigationController?.pushViewController(tabBarListOrMapVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        /*let notesListVC = NotesListViewController(notebook: notebook, managedContext: managedContext)
         let notesListVC = NoteListCollectionViewController(notebook: notebook, coreDataStack: coredataStack)
-        show(notesListVC, sender: nil)
+        show(notesListVC, sender: nil)*/
     }
     
     // Create a header
@@ -354,6 +358,6 @@ extension NotebookListViewController:NSFetchedResultsControllerDelegate {
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.reloadData()
+        tableView.endUpdates()
     }
 }
