@@ -18,6 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="120x180" translatesAutoresizingMaskIntoConstraints="NO" id="chE-kX-8OO">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oU-vs-awG">
                         <rect key="frame" x="33.5" y="64.5" width="33.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -34,18 +37,26 @@
             </view>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="chE-kX-8OO" secondAttribute="trailing" id="66n-Tg-SOo"/>
                 <constraint firstItem="96p-yJ-lal" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Roa-7y-rr8"/>
+                <constraint firstItem="chE-kX-8OO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="WYC-t1-oSA"/>
                 <constraint firstAttribute="bottom" secondItem="96p-yJ-lal" secondAttribute="bottom" constant="20" id="YWM-7Z-eII"/>
                 <constraint firstItem="9oU-vs-awG" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ceV-Ab-SQp"/>
+                <constraint firstItem="chE-kX-8OO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kQk-rL-oHD"/>
                 <constraint firstItem="9oU-vs-awG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="vck-RW-0Sb"/>
+                <constraint firstAttribute="bottom" secondItem="chE-kX-8OO" secondAttribute="bottom" id="y6T-h3-cgt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="109" height="181"/>
             <connections>
                 <outlet property="creationDateLabel" destination="96p-yJ-lal" id="BL9-hP-2Nd"/>
+                <outlet property="imageNote" destination="chE-kX-8OO" id="UdI-4n-tyn"/>
                 <outlet property="titleLabel" destination="9oU-vs-awG" id="Mxx-3s-LBU"/>
             </connections>
             <point key="canvasLocation" x="180" y="95.802098950524751"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="120x180" width="90" height="135"/>
+    </resources>
 </document>

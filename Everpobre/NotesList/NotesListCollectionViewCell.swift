@@ -13,6 +13,7 @@ class NotesListCollectionViewCell: UICollectionViewCell {
     // MARK: IBOulet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var creationDateLabel: UILabel!
+    @IBOutlet weak var imageNote: UIImageView!
     
     // MARK: Properties
     var item: Note!
@@ -25,5 +26,10 @@ class NotesListCollectionViewCell: UICollectionViewCell {
         //backgroundColor = .gray
         titleLabel.text = item.title
         creationDateLabel.text = (item.creationDate as Date?)?.dateToString()
+        
+        if let imageNoteData = item.image, imageNoteData.length > 0 {
+            
+            imageNote.image = UIImage(data: imageNoteData as Data)
+        }
     }
 }

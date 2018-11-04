@@ -49,6 +49,13 @@ class NoteListCollectionViewController: UIViewController {
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
         let exportButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportCSV))
         self.navigationItem.rightBarButtonItems = [addButtonItem, exportButtonItem]
+        
+        setupUI()
+    }
+    
+    func setupUI() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     @objc private func exportCSV(){
